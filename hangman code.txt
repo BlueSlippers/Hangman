@@ -1,0 +1,54 @@
+#include <string>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    cout<<"Enter a word"<<endl;
+    string s;
+    cin>>s;
+    int l=s.length();
+    int i;
+    char a[l];
+    vector<char> h(l,'_');
+    for(i=0;i<l;i++)
+    {
+        a[i]=s[i];
+    }
+    char c;
+    for(i=0;i<l;i++)
+        {
+            cout<<h[i]<<" ";
+        }
+    cout<<endl;
+    int j;
+    cout<<"Specify the number of tries:"<<endl;
+    cin>>j;
+    int count=0;
+    while(j>0)
+    {
+        cin>>c;
+        for(i=0;i<l;i++)
+        {
+            if(c==a[i])
+                {
+                 h[i]=c;
+                 count++;
+                }
+        }
+        for(i=0;i<l;i++)
+        {
+            cout<<h[i]<<" ";
+        }
+        cout<<endl;
+        if(count==0)
+            {
+            j--;
+            cout<<"Number of tries left:"<<j<<endl;
+            }
+        count=0;
+        if(find(h.begin(), h.end(),'_') == h.end())
+        break;
+    }
+}
